@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Book List</title>
+<link rel="stylesheet"  href="/css/Style.css" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h2>Spring Boot Homework 3</h2>
+
+		</div>
+	</div>
+	<nav class="navbar ">
+		<div class="container-fluid">
+			<div class="navbar-header"></div>
+		</div>
+	</nav>
+	<div class="container">
+
+		<h3> <p>All Books</p></h3>
+		<hr />
+		<table class="table table-striped ">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Title</th>
+					<th>publishDate</th>
+					<th>Author</th>
+					<th>Pages</th>
+					<th>Image</th>
+					<th>Action</th>
+
+				</tr>
+			</thead>
+			<tbody th:each="book: ${listBook}">
+				<tr>
+					<td th:text="${book.id}">id</td>
+					<td th:text="${book.title}">title</td>
+					<td th:text="${book.publishDate}">publish date</td>
+
+
+					<td th:text="${book.author}">author</td>
+					<td th:text="${book.page}">pages</td>
+					<td><img th:src="${book.coverImage}" /></td>
+					<td><a th:href="@{/book/{id}(id=${book.id})}">Detail</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+	<footer class="container-fluid text-center">
+		<p>Copy right @ Q Book</p>
+
+	</footer>
+</body>
+</html>
